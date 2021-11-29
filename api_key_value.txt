@@ -1,0 +1,6 @@
+export API_KEY=pk_fda8f61c431342b1b23de6389a53a98b
+
+
+schema:
+CREATE TABLE users (id INTEGER, username TEXT NOT NULL, hash TEXT NOT NULL, cash NUMERIC NOT NULL DEFAULT 10000.00, PRIMARY KEY(id));
+CREATE UNIQUE INDEX username ON users (username);
