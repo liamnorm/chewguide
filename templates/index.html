@@ -6,26 +6,21 @@
 
 {% block main %}
 <form action="/" method="post">
-    <h1>Chew Guide</h1>
-    <p>Your gudie to Annenberg's food</p>
+    <p>Today's menu:</p>
     <div class="mb-3">
         <table class="table tablestriped">
             <thead>
                 <tr>
-                    <th>Symbol</th>
-                    <th>Name</th>
-                    <th>Shares</th>
-                    <th>Price</th>
-                    <th>TOTAL</th>
+                    <th>Food</th>
+                    <th>Picture</th>
+                    <th>Rating</th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in rows %}
                     <tr>
                         <td class="text-start">{{row['symbol']}}</td>
-                        <td class="text-start">{{row['name']}}</td>
-                        <td class="text-end">{{row['shares']}}</td>
-                        <td class="text-end">{{row['price']}}</td>
+                        <td class="text-start">{{row['picture']}}</td>
                         <td class="text-end">{{row['total']}}</td>
                     </tr>
                 {% endfor %}

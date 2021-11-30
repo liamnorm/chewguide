@@ -37,7 +37,7 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    """Show foodz"""
+    """Show foods"""
 
     print("Hello welcome to Chew Guide!!!");
     return render_template("index.html")
