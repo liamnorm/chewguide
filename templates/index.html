@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Portfolio
+    Home
 {% endblock %}
 
 {% block main %}
@@ -19,9 +19,9 @@
             <tbody>
                 {% for row in rows %}
                     <tr>
-                        <td class="text-start">{{row['symbol']}}</td>
+                        <td class="text-start">{{row['food']}}</td>
                         <td class="text-start">{{row['picture']}}</td>
-                        <td class="text-end">{{row['total']}}</td>
+                        <td class="text-end">{{row['rating']}}</td>
                     </tr>
                 {% endfor %}
             </tbody>

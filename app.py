@@ -19,7 +19,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
+db = SQL("sqlite:///menu.db")
 
 # Make sure API key is set
 #if not os.environ.get("API_KEY"):
@@ -39,8 +39,10 @@ def after_request(response):
 def index():
     """Show foods"""
 
+    food = db.execute("SELECT food FROM menu");
+
     print("Hello welcome to Chew Guide!!!");
-    return render_template("index.html")
+    return render_template("index.html", rows=food)
 
 
 def errorhandler(e):
