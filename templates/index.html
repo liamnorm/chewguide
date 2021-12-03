@@ -6,17 +6,19 @@
 
 {% block main %}
 <form action="/" method="post">
-    <p>Today's menu:</p>
+    <header class="bg-dark mb-5 big text-center text-white">
+        Today's Menu:
+    </header>
     <div class="mb-3">
         <table class="table tablestriped">
-            <thead>
+            <thead class="bg-dark mb-5 big text-center text-white">
                 <tr>
                     <th>Food</th>
                     <th>Picture</th>
                     <th>Rating</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-dark mb-5 big text-center text-white">
                 {% for row in rows %}
                     <tr>
                         <td class="text-start">{{row['food']}}</td>
