@@ -45,10 +45,37 @@ def after_request(response):
 def index():
     """Show foods"""
 
-    food = db.execute("SELECT food FROM menu");
+    food = db.execute("SELECT id, food FROM menu");
 
-    print("Hello welcome to Chew Guide!!!");
+    #for foodo in food:
+        #rating = db.execute("SELECT AVG(rating) FROM ratings WHERE food_id = ?", foodo)
+
     return render_template("index.html", rows=food)
+
+@app.route("/rate", methods=["GET", "POST"])
+@login_required
+def rate():
+    """Rank foods"""
+    if request.method == "POST":
+
+        food = request.form.get("food")
+        food_id = db.execute("SELECT id FROM menu WHERE FOOD = ?", food)[0]['id']
+        print(food_id)
+        rating = request.form.get("rating")
+
+        # should override if the user has already ranked this food
+        db.execute("""
+                INSERT INTO ratings
+                (user_id, food_id, rating, ts)
+                VALUES
+                (?, ?, ?, CURRENT_TIMESTAMP);
+                """,
+                session["user_id"], food_id, rating);
+
+        return redirect("/", code=302)
+    else:
+        food = db.execute("SELECT id, food FROM menu");
+        return render_template("rate.html", rows=food)
 
 
 @app.route("/login", methods=["GET", "POST"])

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rate
+{% endblock %}
+
+{% block main %}
+<form action="/rate" method="post">
+    <div class="mb-3">
+        <select autocomplete="off" autofocus class="form-select mx-auto w-auto" id="food" name="food">
+            <option disabled selected>Food</option>
+            {% for row in rows %}
+                <option>{{row['food']}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+      <select autocomplete="off" autofocus class="form-select mx-auto w-auto" id="rating" name="rating">
+          <option disabled selected>Rating</option>
+          {% for number in range(5) %}
+              <option>{{(number + 1)}}</option>
+          {% endfor %}
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Rate</button>
+</form>
+{% endblock %}

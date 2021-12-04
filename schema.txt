@@ -1,0 +1,4 @@
+CREATE TABLE menu(id INTEGER, food TEXT, PRIMARY KEY (id));
+CREATE TABLE users (id INTEGER, username TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY(id));
+CREATE UNIQUE INDEX username ON users (username);
+CREATE TABLE ratings(id INTEGER, food_id INTEGER, rating INTEGER, user_id INTEGER, PRIMARY KEY (id), FOREIGN KEY (food_id) REFERENCES menu(id), FOREIGN KEY (user_id) REFERENCES users(id));
