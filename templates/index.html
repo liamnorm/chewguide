@@ -32,7 +32,12 @@
                         {{row['rating']}}
                         </td>
                         <td class="text-end">{{row['number_of_ratings']}}</td>
-                        <td class="text-end">{{row['my_rating']}}</td>
+                        <td class="text-end">
+                        {% for i in range(row['my_rating']) %}
+                            ★
+                        {% endfor %}
+                        {{row['my_rating']}}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
