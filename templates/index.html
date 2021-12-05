@@ -24,8 +24,13 @@
                 {% for row in rows %}
                     <tr>
                         <td class="text-start">{{row['food']}}</td>
-                        <td class="text-start">{{row['picture']}}</td>
-                        <td class="text-end">{{row['rating']}}</td>
+                        <td class="text-start"> </td>
+                        <td class="text-end">
+                        {% for i in range(row['rating_int']) %}
+                            ★
+                        {% endfor %}
+                        {{row['rating']}}
+                        </td>
                         <td class="text-end">{{row['number_of_ratings']}}</td>
                         <td class="text-end">{{row['my_rating']}}</td>
                     </tr>

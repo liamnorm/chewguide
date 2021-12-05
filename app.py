@@ -51,11 +51,12 @@ def index():
     for i in range(len(food)):
         rating = db.execute("SELECT AVG(rating) FROM ratings WHERE food_id = ?", str(food[i]['id']))
         number_of_ratings = len(db.execute("SELECT DISTINCT user_id FROM ratings WHERE food_id = ?", str(food[i]['id'])))
-        print(number_of_ratings)
+
         my_rating = db.execute("SELECT rating FROM ratings WHERE user_id = ? and food_id = ?", session["user_id"], str(food[i]['id']))
         rows[i]['rating'] = rating[0]['AVG(rating)']
         rows[i]['number_of_ratings'] = number_of_ratings
         rows[i]['my_rating'] = my_rating[0]['rating']
+        rows[i]["rating_int"] = int(rows[i]['rating'])
 
 
     return render_template("index.html", rows=rows)
@@ -68,7 +69,6 @@ def rate():
 
         food = request.form.get("food")
         food_id = db.execute("SELECT id FROM menu WHERE food = ?", food)[0]['id']
-        print(food_id)
         rating = request.form.get("rating")
 
         # should override if the user has already ranked this food
