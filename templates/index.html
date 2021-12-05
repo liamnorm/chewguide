@@ -16,6 +16,8 @@
                     <th>Food</th>
                     <th>Picture</th>
                     <th>Rating</th>
+                    <th>Votes</th>
+                    <th>My Rating</th>
                 </tr>
             </thead>
             <tbody class="bg-dark mb-5 big text-center text-white">
@@ -24,6 +26,8 @@
                         <td class="text-start">{{row['food']}}</td>
                         <td class="text-start">{{row['picture']}}</td>
                         <td class="text-end">{{row['rating']}}</td>
+                        <td class="text-end">{{row['number_of_ratings']}}</td>
+                        <td class="text-end">{{row['my_rating']}}</td>
                     </tr>
                 {% endfor %}
             </tbody>
