@@ -1,17 +1,27 @@
-## Chew Guide
+# The Chew Guide
 
-Hello
+This is is a Flask application.
 
-# Instructions
+# How to Use
 
-Clone this repository
+Here is how to host your own copy of the Chew Guide.
+
+First, clone this repository.
 
 `$ git clone https://github.com/liamnorm/chewguide.git`
 
-Stuff you should run:
+Change directory into the repository.
 
 `$ pip install cs50`
 
 `$ pip install werkzeug`
 
-`$ pip install`
+`$ pip install flask`
+
+`$ pip install flask_session`
+
+Run the following:
+
+`$ flask run`
+
+Then visit https://127.0.0.1:5000/ in a browser.
