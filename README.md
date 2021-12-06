@@ -26,13 +26,7 @@ Change directory into the chewguide repository.
 
 Run the following, if needed, to install the necessary libraries. You will need [pip](https://pip.pypa.io/en/stable/installation/).
 
-`$ pip install cs50`
-
-`$ pip install werkzeug`
-
-`$ pip install flask`
-
-`$ pip install flask_session`
+`$ pip install cs50 werkzeug flask flask_session requests pandas bs4`
 
 To serve the app on your device, run the following:
 
