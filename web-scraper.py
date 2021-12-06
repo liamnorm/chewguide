@@ -87,7 +87,7 @@ for food_item in food_items:
 
         if ing_found == False:
             ingredients.append("Ingredients: N/A")
-        
+
         # Iterate for allergens.
         all_found = False
 
@@ -99,7 +99,7 @@ for food_item in food_items:
             if "Allergens" in food_py.text.strip():
                 # Add the allergens to the list.
                 allergens.append(food_py.text.strip())
-                
+
                 # Testing Purposes:
                 # print(food_py.text.strip())
 
@@ -120,7 +120,7 @@ for food_item in food_items:
 # print("Allergens: " + str(len(allergens)))
 
 # Convert the lists to a dictionary.
-dict = {"item": menu, "ingredients": ingredients, "allergens": allergens}
+dict = {"food": menu, "ingredients": ingredients, "allergens": allergens}
 
 # Send the dictionary to a Pandas Dataframe.
 df = pd.DataFrame(dict)
