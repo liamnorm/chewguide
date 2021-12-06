@@ -4,7 +4,7 @@
 ## Application Summary
 This is is a Flask application.
 
-## Cloning the Chew Guide from GitHub 
+## Cloning the Chew Guide from GitHub
 
 Here is how to host your own copy of the Chew Guide.
 
@@ -38,7 +38,13 @@ To serve the app on your device, run the following:
 
 `$ flask run`
 
+If you get the error "The term flask is not recognized...", you may need to run
+
+`$ python -m flask run`
+
 Then visit https://127.0.0.1:5000/ in a browser.
+
+Type Ctrl + C to quit running the Flask app.
 
 ## Getting Started
 
@@ -46,15 +52,15 @@ You should be faced with the login page. Register for a Chew Guide on your local
 
 ## Key Features on the Chew Guide
 
-###### Menu Information 
+###### Menu Information
 
-Upon logging in you should see a list of the food Annenberg is serving for a given meal. 
+Upon logging in you should see a list of the food Annenberg is serving for a given meal.
 
 ###### Specific Food Information
 
-You can click on each food, and it will take you to a page containing its ingredients and allergen information. This allows users to not have to use both the Chew Guide and the HUDS website when trying to get the full picture of what Anneberg is offering on that day. 
+You can click on each food, and it will take you to a page containing its ingredients and allergen information. This allows users to not have to use both the Chew Guide and the HUDS website when trying to get the full picture of what Anneberg is offering on that day.
 
-###### Food Ranking Feature 
+###### Food Ranking Feature
 
 To rank a menu item, click on Rate in the top corner. This will take you to a page with a rating form.
 
