@@ -55,8 +55,15 @@ def index():
         my_rating = db.execute("SELECT rating FROM ratings WHERE user_id = ? and food_id = ?", session["user_id"], str(food[i]['id']))
         rows[i]['rating'] = rating[0]['AVG(rating)']
         rows[i]['number_of_ratings'] = number_of_ratings
-        rows[i]['my_rating'] = my_rating[0]['rating']
-        rows[i]["rating_int"] = int(rows[i]['rating'])
+        if len(my_rating) > 0:
+            rows[i]['my_rating'] = my_rating[0]['rating']
+        else:
+            rows[i]['my_rating'] = 0
+
+        if rows[i]["rating"] != None:
+            rows[i]["rating_int"] = int(rows[i]['rating'])
+        else:
+            rows[i]["rating_int"] = 0
 
 
     return render_template("index.html", rows=rows)

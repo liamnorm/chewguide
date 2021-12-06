@@ -12,6 +12,8 @@ First, clone this repository.
 
 Change directory into the repository.
 
+Run the following, if needed, to install any missing libraries.
+
 `$ pip install cs50`
 
 `$ pip install werkzeug`
@@ -20,8 +22,10 @@ Change directory into the repository.
 
 `$ pip install flask_session`
 
-Run the following:
+To serve the app on your device, run the following:
 
 `$ flask run`
 
 Then visit https://127.0.0.1:5000/ in a browser.
+
+Create an account, then rank Annenberg's food!
