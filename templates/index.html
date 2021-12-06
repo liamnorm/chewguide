@@ -13,8 +13,9 @@
         <table class="table tablestriped">
             <thead class="bg-dark mb-5 big text-center text-white">
                 <tr>
+                    <th>Category</th>
                     <th>Food</th>
-                    <th>Picture</th>
+                    <th>Stars</th>
                     <th>Rating</th>
                     <th>Votes</th>
                     <th>My Rating</th>
@@ -23,14 +24,14 @@
             <tbody class="bg-dark mb-5 big text-center text-white">
                 {% for row in rows %}
                     <tr>
-                        <td class="text-start">{{row['food']}}</td>
-                        <td class="text-start"> </td>
+                        <td class="text-start">{{row['class']}}</td>
+                        <td class="text-end"><a href="/rate">{{row['food']}}</a></td>
                         <td class="text-end">
                         {% for i in range(row['rating_int']) %}
                             ★
                         {% endfor %}
-                        {{row['rating']}}
                         </td>
+                        <td class="text-start">{{row['rating']}}</td>
                         <td class="text-end">{{row['number_of_ratings']}}</td>
                         <td class="text-end">
                         {% for i in range(row['my_rating']) %}

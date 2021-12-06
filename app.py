@@ -3,7 +3,6 @@ import os
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-#from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -26,9 +25,6 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///menu.db")
 
-# Make sure API key is set
-#if not os.environ.get("API_KEY"):
-    #raise RuntimeError("API_KEY not set")
 
 
 @app.after_request
@@ -45,28 +41,44 @@ def after_request(response):
 def index():
     """Show foods"""
 
-    food = db.execute("SELECT id, food FROM menu");
+    food = db.execute("SELECT id, food, class FROM menu");
     rows = food;
 
     for i in range(len(food)):
+
+        # Get a food's average rating across all users
         rating = db.execute("SELECT AVG(rating) FROM ratings WHERE food_id = ?", str(food[i]['id']))
+
+        # Get the number of ratings for this food
         number_of_ratings = len(db.execute("SELECT DISTINCT user_id FROM ratings WHERE food_id = ?", str(food[i]['id'])))
 
+        # Get the users' rating for this food
         my_rating = db.execute("SELECT rating FROM ratings WHERE user_id = ? and food_id = ?", session["user_id"], str(food[i]['id']))
-        rows[i]['rating'] = rating[0]['AVG(rating)']
+
+        # Put all this information into a list of dictionaries
+
+        if rating[0]['AVG(rating)'] != None:
+            rows[i]['rating'] = round(rating[0]['AVG(rating)'], 2)
+        else:
+            rows[i]['rating'] = 0
+
         rows[i]['number_of_ratings'] = number_of_ratings
         if len(my_rating) > 0:
             rows[i]['my_rating'] = my_rating[0]['rating']
         else:
             rows[i]['my_rating'] = 0
 
-        if rows[i]["rating"] != None:
+        if rows[i]["rating"] != 0:
             rows[i]["rating_int"] = int(rows[i]['rating'])
         else:
             rows[i]["rating_int"] = 0
 
+    # Sort by ranking
 
-    return render_template("index.html", rows=rows)
+    sorted_rows = sorted(rows, key = lambda i: i['rating'], reverse=True)
+
+
+    return render_template("index.html", rows=sorted_rows)
 
 @app.route("/rate", methods=["GET", "POST"])
 @login_required
@@ -78,7 +90,7 @@ def rate():
         food_id = db.execute("SELECT id FROM menu WHERE food = ?", food)[0]['id']
         rating = request.form.get("rating")
 
-        # should override if the user has already ranked this food
+        # Should update previous rating if the user has already ranked this food
         if len(db.execute("SELECT * FROM ratings WHERE user_id = ? AND food_id = ?", session["user_id"], food_id)) > 0:
             db.execute("""
                 UPDATE ratings
@@ -87,6 +99,7 @@ def rate():
                 """,
                 rating, session["user_id"], food_id);
         else:
+        # Add a new rating if user has not ranked this food
             db.execute("""
                 INSERT INTO ratings
                 (user_id, food_id, rating, ts)
