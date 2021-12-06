@@ -69,7 +69,10 @@ for food_item in food_items:
         food_ps = results.find_all("p")
 
         # Iterate for ingredients.
+        ing_found = False
+
         for food_p in food_ps:
+
             # Search for the ingredients within the text.
             if "Ingredients" in food_p.text.strip() and "Consumer Responsibility" not in food_p.text.strip():
                 # Add the ingredients to the list.
@@ -78,10 +81,20 @@ for food_item in food_items:
                 # Testing Purposes:
                 # print(food_p.text.strip())
 
+                ing_found = True
+
                 break
+
+        if ing_found == False:
+            ingredients.append("Ingredients: N/A")
         
         # Iterate for allergens.
+        all_found = False
+
         for food_py in food_ps:
+
+            found = False
+
             # Search for the allergens within the text.
             if "Allergens" in food_py.text.strip():
                 # Add the allergens to the list.
@@ -90,15 +103,25 @@ for food_item in food_items:
                 # Testing Purposes:
                 # print(food_py.text.strip())
 
+                all_found = True
+
                 break
 
+        if all_found == False:
+            allergens.append("Allergens: N/A")
 
     # Elements past "Cancel" are valid food items.
     if food_item.text.strip() == "Cancel":
         valid_food = True
 
+# Testing Purposes
+# print("Menu: " + str(len(menu)))
+# print("Ingredients: " + str(len(ingredients)))
+# print("Allergens: " + str(len(allergens)))
+
 # Convert the lists to a dictionary.
 dict = {"item": menu, "ingredients": ingredients, "allergens": allergens}
+
 # Send the dictionary to a Pandas Dataframe.
 df = pd.DataFrame(dict)
 
