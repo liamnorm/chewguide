@@ -26,7 +26,7 @@ Change directory into the chewguide repository.
 
 Run the following, if needed, to install the necessary libraries. You will need [pip](https://pip.pypa.io/en/stable/installation/).
 
-`$ pip install cs50 werkzeug flask flask_session requests pandas bs4`
+`$ pip install sqlite3 cs50 werkzeug flask flask_session requests pandas bs4`
 
 To serve the app on your device, run the following:
 
@@ -61,3 +61,10 @@ To rank a menu item, click on Rate in the top corner. This will take you to a pa
 Select the menu item you want to rate from the drop down list and enter a rating from 1 to 5. Your ranking will be added to the database.
 
 To see how rankings average over multiple users, you can log out, register another account, and rank foods through that account.
+
+
+To update the menu, run 
+`python3 web-scraper.py`
+`sqlite3 menu.db`
+`.mode csv`
+`.import menu_items.csv menu`

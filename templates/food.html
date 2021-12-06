@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<form action="/" method="post">
+    <h1 class="bg-dark mb-5 big text-center text-white">
+        {{food}}
+    </h1>
+
+    <h2 class="bg-dark mb-5 big text-center text-white">Ingredients</h2>
+
+    <p class="bg-dark mb-5 big text-center text-white">
+        {{ingred}}
+    </p>
+
+    <h2 class="bg-dark mb-5 big text-center text-white">Allergens</h2>
+
+    <p class="bg-dark mb-5 big text-center text-white">
+        {{allergens}}
+    </p>
+    <a href="/rate/{{food}}">Rate</a>
+</form>
+{% endblock %}

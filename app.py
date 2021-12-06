@@ -41,7 +41,7 @@ def after_request(response):
 def index():
     """Show foods"""
 
-    food = db.execute("SELECT id, food, class FROM menu");
+    food = db.execute("SELECT id, food FROM menu");
     rows = food;
 
     for i in range(len(food)):
@@ -63,7 +63,7 @@ def index():
             rows[i]['rating'] = 0
 
         rows[i]['number_of_ratings'] = number_of_ratings
-        if len(my_rating) > 0:
+        if len(my_rating) > 0 and my_rating[0]['rating'] != None:
             rows[i]['my_rating'] = my_rating[0]['rating']
         else:
             rows[i]['my_rating'] = 0
@@ -80,7 +80,18 @@ def index():
 
     return render_template("index.html", rows=sorted_rows)
 
-@app.route("/rate", methods=["GET", "POST"])
+@app.route("/food/<food>", methods=["GET", "POST"])
+@login_required
+def food(food):
+    """Show a food"""
+    ingred = db.execute("SELECT ingredients FROM menu WHERE food = ?", food)[0]['ingredients']
+    allergens = db.execute("SELECT allergens FROM menu WHERE food = ?", food)[0]['allergens']
+
+    print(food)
+
+    return render_template("food.html", food=food, ingred=ingred, allergens=allergens)
+
+@app.route("/rate/<selected_food>", methods=["GET", "POST"])
 @login_required
 def rate():
     """Rate foods"""
