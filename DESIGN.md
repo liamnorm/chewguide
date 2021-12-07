@@ -15,6 +15,7 @@ We ended up reimplementing many of the features present in the Finance problem s
 The index.html displays a table with 
 
 ## Webscraping
+In our design process, webscraping was the big question mark. On top of the fact that no one in our group had experience working with web scrapers before, it was apparent that the HUDS website had many flaws in it, including messy formatting, glitches in loading the website, and questionable functionality. So, we began by scouring every inch of the HUDS website, learning when the meals refresh, and going over the code line-by-line to figure out how to best extract the content. We created a pseudocode algorithm to work within that framework, and then needed to find a way to implement the scraper. We chose the BeautifulSoup library ultimately for its ability to shrink down web pages to pertinent information. After much trial and error, we were able to regularly scrape information from the website to great success.
 
 ###### Basic Menu Items
 
