@@ -6,21 +6,21 @@
 
 {% block main %}
 <form action="/" method="post">
-    <header class="bg-dark mb-5 big text-center text-white">
+    <h1 class="mb-5 big text-center text-black">
         Today's Menu:
-    </header>
+    </h1>
     <div class="mb-3">
         <table class="table tablestriped">
-            <thead class="bg-dark mb-5 big text-center text-white">
+            <thead class="mb-5 big text-center text-black">
                 <tr>
-                    <th>Food</th>
-                    <th>Stars</th>
-                    <th>Rating</th>
-                    <th>Votes</th>
-                    <th>My Rating</th>
+                    <th class="text-end">Food</th>
+                    <th class="text-end">Stars</th>
+                    <th class="text-start">Rating</th>
+                    <th class="text-end">Votes</th>
+                    <th class="text-end">My Rating</th>
                 </tr>
             </thead>
-            <tbody class="bg-dark mb-5 big text-center text-white">
+            <tbody>
                 {% for row in rows %}
                     <tr>
                         <td class="text-end"><a href="/food/{{row['food']}}">{{row['food']}}</a></td>

@@ -7,7 +7,7 @@
 {% block main %}
 <form action="/" method="post">
     <h1 class="bg-dark mb-5 big text-center text-white">
-        {{food}}
+        {{food}} <a href="/rate">[Rate]</a>
     </h1>
 
     <h2 class="bg-dark mb-5 big text-center text-white">Ingredients</h2>
@@ -21,6 +21,5 @@
     <p class="bg-dark mb-5 big text-center text-white">
         {{allergens}}
     </p>
-    <a href="/rate/{{food}}">Rate</a>
 </form>
 {% endblock %}

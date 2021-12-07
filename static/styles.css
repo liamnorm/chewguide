@@ -5,12 +5,20 @@ nav .navbar-brand
 }
 
 /* Colors for brand */
-nav .navbar-brand .blue
+nav .navbar-brand .red
 {
-    color: #45adbf;
+    color: #f54242;
     font-family: "Arial";
 }
 
-#body {
-    background: #1f1f2e;
+a:link {
+  color: #f54242;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #590058;
+  background-color: transparent;
+  text-decoration: none;
 }

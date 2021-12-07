@@ -91,7 +91,7 @@ def food(food):
 
     return render_template("food.html", food=food, ingred=ingred, allergens=allergens)
 
-@app.route("/rate/<selected_food>", methods=["GET", "POST"])
+@app.route("/rate", methods=["GET", "POST"])
 @login_required
 def rate():
     """Rate foods"""
