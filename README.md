@@ -1,12 +1,14 @@
 # The Chew Guide
-[Video Presentation of Application](Insert Youtube Link)
+[Video Presentation of Application](https://youtu.be/NyPgp9OGxk8)
 
-## Application Summary
-This is is a Flask application.
+## Application Purpose
+The purpose of this application is to let people rank the food that Annenberg is serving, in turn letting other people know what the best food at Annenberg is. Since the menu items changes every day, and the food is prepared differently each day.
+This is is a Flask application, designed to be hosted on the internet to allow people to log on and rank Annenberg's food.
+
+# Hosting your own local Chew Guide
+Here is how to host your own copy of the Chew Guide. You can either clone this git repository or, if you have a retrieved a zipped file from Gradescope, you can use that to run the submitted version.
 
 ## Cloning the Chew Guide from GitHub
-
-Here is how to host your own copy of the Chew Guide.
 
 First, clone this repository.
 
@@ -16,7 +18,7 @@ Then continue to "Running the Chew Guide."
 
 ## Downloading the Chew Guide from a Zipped File
 
-After you have downloaded the zipped file with all the components (i.e. from Gradesope), extract all and continue to "Running the Chew Guide."
+After you have downloaded the zipped file with all the components (i.e. from Gradescope), extract all and continue to "Running the Chew Guide."
 
 ## Running the Chew Guide
 
@@ -34,15 +36,15 @@ To serve the app on your device, run the following:
 
 If you get the error "The term flask is not recognized...", you may need to run
 
-`$ python -m flask run`
+`$ python -m flask run` instead.
 
-Then visit https://127.0.0.1:5000/ in a browser.
+Then visit https://127.0.0.1:5000/ in a browser. A login page should appear.
 
 Type Ctrl + C to quit running the Flask app.
 
 ## Getting Started
 
-You should be faced with the login page. Register for a Chew Guide on your local server by entering a username and password. After registering you will need to log in again.
+After running the app, you should be faced with the login page in the browser. Register for a Chew Guide on your local server by entering a username and password. After registering you will need to log in again.
 
 ## Key Features on the Chew Guide
 
@@ -63,7 +65,7 @@ Select the menu item you want to rate from the drop down list and enter a rating
 To see how rankings average over multiple users, you can log out, register another account, and rank foods through that account.
 
 
-To update the menu, run 
+To update the menu, run
 `python3 web-scraper.py`
 `sqlite3 menu.db`
 `.mode csv`
