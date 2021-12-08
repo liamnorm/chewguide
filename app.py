@@ -84,10 +84,8 @@ def index():
 @login_required
 def food(food):
     """Show a food"""
-    ingred = db.execute("SELECT ingredients FROM menu WHERE food = ?", food)[0]['ingredients']
-    allergens = db.execute("SELECT allergens FROM menu WHERE food = ?", food)[0]['allergens']
-
-    print(food)
+    ingred = db.execute("SELECT class FROM menu WHERE food = ?", food)[0]['class']
+    allergens = db.execute("SELECT ingredients FROM menu WHERE food = ?", food)[0]['ingredients']
 
     return render_template("food.html", food=food, ingred=ingred, allergens=allergens)
 

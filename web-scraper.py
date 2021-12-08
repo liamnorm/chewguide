@@ -7,6 +7,7 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import time
+from cs50 import SQL
 
 def pull_menu():
     # Locate the URL of the HUDS website.
@@ -89,7 +90,7 @@ def pull_menu():
 
             if ing_found == False:
                 ingredients.append("Ingredients: N/A")
-            
+
             # Iterate for allergens.
             all_found = False
 
@@ -101,7 +102,7 @@ def pull_menu():
                 if "Allergens" in food_py.text.strip():
                     # Add the allergens to the list.
                     allergens.append(food_py.text.strip())
-                    
+
                     # Testing Purposes:
                     # print(food_py.text.strip())
 
@@ -130,12 +131,13 @@ def pull_menu():
     # Convert the file to a CSV for processing into SQL.
     df.to_csv("menu_items.csv")
 
+
 # Auto-refresh the CSV
 if __name__ == '__main__':
     while True:
         pull_menu()
 
-        # Adjust this time for minutes 
+        # Adjust this time for minutes
         time_wait = 10
 
         # Sleep for that set amount of minutes

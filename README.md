@@ -64,9 +64,9 @@ Select the menu item you want to rate from the drop down list and enter a rating
 
 To see how rankings average over multiple users, you can log out, register another account, and rank foods through that account.
 
-
 To update the menu, run
 `python3 web-scraper.py`
 `sqlite3 menu.db`
+`DELETE FROM menu;`
 `.mode csv`
 `.import menu_items.csv menu`
